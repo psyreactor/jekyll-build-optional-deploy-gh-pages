@@ -67,8 +67,8 @@ fi
 
 
 echo '[!] - Installing Gem Bundle'
-bundle install --path vendor/cache
-
+bundle config set path 'vendor/cache'
+bundle install
 echo -n '[!] - Jekyll Version: '
 bundle list | grep "jekyll ("
 
@@ -99,7 +99,9 @@ if [ "$DEPLOY_SITE" = true ]; then
 	git config user.name "${GITHUB_ACTOR}" && \
 	git config user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
 	git add . && \
-	
+	echo "${BUILD_DIR}" \
+	echo "the branch is:$remote_branch" \
+	echo "the repo is: $remote_repo" \
 	echo -n '[!] - Files to Commit:' && ls -l | wc -l && \
 	
 	git commit -m'action build' > /dev/null 2>&1 && \
