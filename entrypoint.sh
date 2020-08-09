@@ -67,7 +67,7 @@ fi
 
 
 echo '[!] - Installing Gem Bundle'
-bundle install
+bundle install --path vendor/cache
 
 echo -n '[!] - Jekyll Version: '
 bundle list | grep "jekyll ("
