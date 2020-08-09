@@ -61,6 +61,13 @@ if [ "$DEPLOY_SITE" = true ]; then
 	  echo "[!] - REMOTE_BRANCH is not set. Assuming we want to push the built site into gh-pages"
 	  REMOTE_BRANCH="gh-pages";
 	fi
+	
+	# check values
+	if [ -n "${PUBLISH_REPOSITORY}" ]; then
+	    PRO_REPOSITORY=${PUBLISH_REPOSITORY}
+	else
+	    PRO_REPOSITORY=${GITHUB_REPOSITORY}
+	fi
 fi
 
 
@@ -92,7 +99,7 @@ if [ "$DEPLOY_SITE" = true ]; then
 	fi
 	
 	cd "${BUILD_DIR}"
-	remote_repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
+	remote_repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${PRO_REPOSITORY}.git" && \
 	remote_branch="${REMOTE_BRANCH}" && \
 	
 	git init && \
