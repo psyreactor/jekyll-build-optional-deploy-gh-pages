@@ -111,8 +111,8 @@ if [ "$DEPLOY_SITE" = true ]; then
 	echo "the repo is: $remote_repo" \
 	echo -n '[!] - Files to Commit:' && ls -l | wc -l && \
 	
-	git commit -m'action build' > /dev/null 2>&1 && \
-	git push --force $remote_repo master:$remote_branch > /dev/null 2>&1 && \
+	git commit -m'action build' && \
+	git push --force $remote_repo master:$remote_branch && \
 	
 	rm -fr .git && \
 	
